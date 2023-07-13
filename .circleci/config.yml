@@ -5,6 +5,8 @@ orbs:
 
 jobs:
   build_and_rebrand:
+    docker:
+      - image: cimg/base:stable
     steps: 
       - node/install:
           node-version: '16.13'
