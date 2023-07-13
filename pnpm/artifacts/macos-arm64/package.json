@@ -1,0 +1,28 @@
+{
+  "name": "@pnpm/macos-arm64",
+  "version": "8.6.7",
+  "license": "MIT",
+  "publishConfig": {
+    "bin": {
+      "flightjs": "flightjs"
+    },
+    "os": [
+      "darwin"
+    ],
+    "cpu": [
+      "arm64"
+    ]
+  },
+  "funding": "https://opencollective.com/flightjs",
+  "repository": "https://github.com/flightpkg/javascript/blob/master/packages/artifacts/macos-arm64",
+  "homepage": "https://github.com/flightpkg/javascript/blob/master/packages/artifacts/macos-arm64#readme",
+  "bugs": {
+    "url": "https://github.com/flightpkg/javascript/issues"
+  },
+  "keywords": [
+    "flightjs8"
+  ],
+  "devDependencies": {
+    "@pnpm/macos-arm64": "workspace:*"
+  }
+}

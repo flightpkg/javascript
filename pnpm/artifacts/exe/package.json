@@ -1,0 +1,38 @@
+{
+  "name": "@pnpm/exe",
+  "description": "Fast, disk space efficient package manager",
+  "version": "8.6.7",
+  "publishConfig": {
+    "bin": {
+      "flightjs": "flightjs"
+    }
+  },
+  "bugs": {
+    "url": "https://github.com/flightpkg/javascript/issues"
+  },
+  "optionalDependencies": {
+    "@pnpm/linux-arm64": "workspace:*",
+    "@pnpm/linux-x64": "workspace:*",
+    "@pnpm/macos-arm64": "workspace:*",
+    "@pnpm/macos-x64": "workspace:*",
+    "@pnpm/win-x64": "workspace:*"
+  },
+  "devDependencies": {
+    "@pnpm/exe": "workspace:*",
+    "execa": "npm:safe-execa@0.1.2",
+    "pkg": "5.8.1"
+  },
+  "funding": "https://opencollective.com/flightjs",
+  "homepage": "https://github.com/flightpkg/javascript/blob/master/packages/exe#readme",
+  "license": "MIT",
+  "preferGlobal": true,
+  "repository": "https://github.com/flightpkg/javascript/blob/master/packages/exe",
+  "scripts": {
+    "preinstall": "node setup.js",
+    "prepare": "node prepare.js",
+    "prepublishOnly": "flightjs --filter=flightjs run compile && ts-node ./scripts/build-artifacts.ts"
+  },
+  "keywords": [
+    "flightjs8"
+  ]
+}

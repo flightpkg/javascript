@@ -1,0 +1,7 @@
+{
+  "pkg": {
+    "assets": ["dist/flightjsrc", "dist/scripts/*"],
+    "targets": ["node18-linux-arm64"],
+    "outputPath": "../linux-arm64"
+  }
+}
