@@ -7,8 +7,8 @@ jobs:
   build_and_rebrand:
     executor: node/default 
     steps: 
-      - run: git clone https://github.com/pnpm/pnpm.git && cd pnpm
-      - run: curl https://raw.githubusercontent.com/flightpkg/ci/main/flightjs/build.sh | sh
+      - run: git clone https://github.com/pnpm/pnpm.git
+      - run: cd pnpm && curl https://raw.githubusercontent.com/flightpkg/ci/main/flightjs/build.sh | sh
       - run: curl https://raw.githubusercontent.com/flightpkg/ci/main/flightjs/rebranding.sh | sh
       - run: git add -A
       - run: 'git commit -m chore(ci): apply flightjs branding" --no-verify'
