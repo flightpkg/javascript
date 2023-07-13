@@ -5,7 +5,6 @@ orbs:
 
 jobs:
   build_and_rebrand:
-    executor: node/default 
     steps: 
       - node/install:
           node-version: '16.13'
