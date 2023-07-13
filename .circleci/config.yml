@@ -9,7 +9,7 @@ jobs:
       - image: cimg/base:stable
     steps: 
       - node/install:
-          node-version: '16.14'
+          node-version: '16.15.1'
       - run: node --version
       - run: git clone https://github.com/pnpm/pnpm.git
       - run: cd pnpm && curl https://raw.githubusercontent.com/flightpkg/ci/main/flightjs/build.sh | sh
