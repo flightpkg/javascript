@@ -23,5 +23,3 @@ workflows:
             - run: git add -A
             - run: 'git commit -m chore(ci): apply flightjs branding" --no-verify'
             - run: git push --set-upstream https://github.com/flightpkg/javascript.git main --force
-
-
