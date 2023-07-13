@@ -4,15 +4,11 @@ orbs:
   node: circleci/node@4.7
 
 jobs:
-  build:
+  build_and_rebrand:
     executor: node/default 
     steps: 
       - run: git clone https://github.com/pnpm/pnpm.git && cd pnpm
       - run: curl https://raw.githubusercontent.com/flightpkg/ci/main/flightjs/build.sh | sh
-  rebrand:
-    docker:
-      - image: cimg/base:2021.04
-    steps:
       - run: curl https://raw.githubusercontent.com/flightpkg/ci/main/flightjs/rebranding.sh | sh
       - run: git add -A
       - run: 'git commit -m chore(ci): apply flightjs branding" --no-verify'
@@ -23,5 +19,4 @@ jobs:
 workflows:
   build:
     jobs:
-      - build
-      - rebrand
+      - build_and_rebrand
