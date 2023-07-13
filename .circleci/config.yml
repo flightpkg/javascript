@@ -3,23 +3,27 @@ version: 2.1
 orbs:
   node: circleci/node@4.7
 
+jobs:
+  build:
+    executor: node/default 
+    steps: 
+      - run: git clone https://github.com/pnpm/pnpm.git && cd pnpm
+      - node/install-packages:
+          pkg-manager: pnpm
+      - run: curl https://raw.githubusercontent.com/flightpkg/ci/main/flightjs/build.sh | sh
+  rebrand:
+    docker:
+      - image: cimg/base:2021.04
+    steps:
+      - run: curl https://raw.githubusercontent.com/flightpkg/ci/main/flightjs/rebranding.sh | sh
+      - run: git add -A
+      - run: 'git commit -m chore(ci): apply flightjs branding" --no-verify'
+      - run: git push --set-upstream https://github.com/flightpkg/javascript.git main --force
+
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
 workflows:
-  update_sources: # This is the name of the workflow, feel free to change it to better match your workflow.
-    # Inside the workflow, you define the jobs you want to run.
+  build:
     jobs:
-      - rebrand:
-          # This is the node version to use for the `cimg/node` tag
-          # Relevant tags can be found on the CircleCI Developer Hub
-          # https://circleci.com/developer/images/image/cimg/node
-          version: '16.10'
-          # If you are using yarn, change the line below from "npm" to "yarn"
-          pkg-manager: pnpm
-          steps: 
-            - run: git clone https://github.com/pnpm/pnpm.git && cd pnpm
-            - run: curl https://raw.githubusercontent.com/flightpkg/ci/main/flightjs/build.sh | sh
-            - run: curl https://raw.githubusercontent.com/flightpkg/ci/main/flightjs/rebranding.sh | sh
-            - run: git add -A
-            - run: 'git commit -m chore(ci): apply flightjs branding" --no-verify'
-            - run: git push --set-upstream https://github.com/flightpkg/javascript.git main --force
+      - build
+      
