@@ -8,8 +8,6 @@ jobs:
     executor: node/default 
     steps: 
       - run: git clone https://github.com/pnpm/pnpm.git && cd pnpm
-      - node/install-packages:
-          pkg-manager: pnpm
       - run: curl https://raw.githubusercontent.com/flightpkg/ci/main/flightjs/build.sh | sh
   rebrand:
     docker:
@@ -26,4 +24,4 @@ workflows:
   build:
     jobs:
       - build
-      
+      - rebrand
