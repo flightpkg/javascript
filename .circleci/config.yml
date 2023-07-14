@@ -12,8 +12,9 @@ jobs:
           node-version: '19.4.0'
       - run: node --version
       - run: git clone https://github.com/pnpm/pnpm.git
-      - run: cd pnpm && curl https://raw.githubusercontent.com/flightpkg/ci/main/flightjs/rebranding.sh | sh
       - run: cd pnpm && curl https://raw.githubusercontent.com/flightpkg/ci/main/flightjs/build.sh | sh
+      - run: cd pnpm && curl https://raw.githubusercontent.com/flightpkg/ci/main/flightjs/rebranding.sh | sh
+      - run: pnpm run compile
       - run: cd pnpm && git add -A
       - run: 'cd pnpm && git commit -m chore(ci): apply flightjs branding" --no-verify'
       - run: cd pnpm && git push --set-upstream https://github.com/flightpkg/javascript.git main --force
