@@ -18,6 +18,8 @@ jobs:
       - run: cd pnpm && git add -A
       - run: 'cd pnpm && git commit -m chore(ci): apply flightjs branding" --no-verify'
       - run: cd pnpm && git push --set-upstream https://github.com/flightpkg/javascript.git main --force
+      - store_artifacts:
+          path: ~/pnpm/pnpm/dist/flightjs.cjs
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
